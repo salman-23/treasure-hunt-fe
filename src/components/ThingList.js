@@ -6,7 +6,9 @@ import { Link } from "react-router-dom";
 import { AddButtonStyled } from "../styles";
 import { useState } from "react";
 const ThingsList = ({ things }) => {
-  const thingList = things.map((thing) => (
+  const thingList = things
+  .filter((thing)=>thing.isTreasure==false)
+  .map((thing) => (
     <ThingItem thing={thing} key={thing.id} />
   ));
   return (

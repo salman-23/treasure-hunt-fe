@@ -5,19 +5,21 @@ import { Link } from "react-router-dom";
 
 import { AddButtonStyled } from "../styles";
 import { useState } from "react";
-
-const TreasureList = ({ treasures }) => {
-  const treasureList = treasures.map((treasure) => (
-    <ThingItem treasure={treasure} key={treasure.id} />
+const TreasureList= ({ things }) => {
+  const thingList = things
+  .filter((thing)=>thing.isTreasure==true)
+  .map((thing) => (
+    <ThingItem thing={thing} key={thing.id} />
   ));
+  console.log(thingList);
   return (
     <div>
       <Title>Treasure</Title>
-      <Link to="/treasures/">
-        {/* <AddButtonStyled> treasure</AddButtonStyled> */}
+      <Link to="/things/">
+        {/* <AddButtonStyled> thing</AddButtonStyled> */}
       </Link>
       <div>
-        <ListWrapper>{treasureList}</ListWrapper>
+        <ListWrapper>{thingList}</ListWrapper>
       </div>
     </div>
   );

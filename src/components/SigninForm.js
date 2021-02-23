@@ -1,11 +1,19 @@
 import { useState } from "react";
+import { useForm } from "react-hook-form";
 import { UpdateButtonStyled } from "../styles";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { signin } from "../store/actions/authActions";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye } from "@fortawesome/free-solid-svg-icons";
+const eye = <FontAwesomeIcon icon={faEye} />;
 
 const SigninForm = () => {
   const history = useHistory();
+  const [passwordShown, setPasswordShown] = useState(false);
+  const togglePasswordVisiblity = () => {
+    setPasswordShown(passwordShown ? false : true);
+  };
 
   const dispatch = useDispatch();
 
@@ -48,11 +56,13 @@ const SigninForm = () => {
         <label>
           Password:
           <input
-            type="password"
+             type={passwordShown ? "text" : "password"}
             name="password"
             value={user.password}
             onChange={handleChnage}
           />
+          <i onClick={togglePasswordVisiblity}>{eye}</i>
+          
         </label>
 
         <UpdateButtonStyled onSubmit={handleSubmit}>Sign In</UpdateButtonStyled>

@@ -48,7 +48,7 @@ const NavBar = (props) => {
         <NavProduct to="/things" className="nav-item">
           things
         </NavProduct>
-        <NavProduct to="/treasure" className="nav-item">
+        <NavProduct to="/treasures" className="nav-item">
           treasure
         </NavProduct>
    

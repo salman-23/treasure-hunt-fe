@@ -7,6 +7,7 @@ import SignupForm from "./SignupForm";
 import SigninForm from "./SigninForm";
 
 const Routes = () => {
+  const things = useSelector((state) => state.thingsReducer.things);
   return (
     <Switch>
       <Route path="/signup">
@@ -16,12 +17,11 @@ const Routes = () => {
         <SigninForm />
       </Route>
       <Route path="/treasures">
-        <TreasureList />
-        {/* <TreasureList treasures={treasures} /> */}
+       <TreasureList things={things} /> 
       </Route>
       <Route path="/things">
-        {/* <ThingList things={things} /> */}
-        <ThingList />
+        <ThingList things={things} />
+        
       </Route>
       <Route exact path="/">
         <Home />
